@@ -1,0 +1,11 @@
+## Title: DataForAzeroth
+## Author: shoogen
+## IconTexture: Interface/Addons/DataForAzeroth/assets/Logo
+## Interface: 11506, 11507, 20504, 30403, 40402, 50500, 110100, 110105
+## Version: @project-version@
+## X-Curse-Project-ID: 
+## X-Wago-ID: 
+
+DataForAzeroth.lua
+Localization.lua
+Tooltips.lua
