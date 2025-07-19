@@ -22,6 +22,15 @@ jobs:
           # alternative would be to use checkout@v1
           fetch-depth: 0
 
+      # generate leaderboard file
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate DataForAzeroth.lua
+        run: node generate.js
+
       # once cloned, we just run the GitHub Action for the packager project
       - name: Package and release
         uses: BigWigsMods/packager@v2
