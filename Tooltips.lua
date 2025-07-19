@@ -124,7 +124,7 @@ local function AttachCharacterData(self, guid)
 		if data then
 			self:AddLine(" ");
 			self:AddDoubleLine(L.DATAFORAZEROTH, GetProgressColorText(data[1],data[2]));
-			self:AddDoubleLine(" ", L.RANK_FORMAT:format(GetRankColorText(data[3]), GetRankColorText(data[4]), GetRankColorText(data[5])));
+			self:AddDoubleLine(" ", L.RANK_FORMAT:format(GetRankColorText(data[3])));
 		end
 	end
 end
