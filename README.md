@@ -11,7 +11,7 @@
 [![Patreon](https://img.shields.io/badge/Patreon-F96854?&logo=patreon&logoColor=white)](https://www.patreon.com/shoogen)
 [![Twitch](https://img.shields.io/badge/Twitch-%239146FF?logo=twitch&logoColor=white)](https://twitch.tv/shoogen)
 <br>
-[![CurseForge](https://cf.way2muchnoise.eu/267285.svg)](https://www.curseforge.com/wow/addons/dataforazeroth)
+[![CurseForge](https://cf.way2muchnoise.eu/1309636.svg)](https://www.curseforge.com/wow/addons/dataforazeroth)
 ![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/ATTWoWAddon/DataForAzeroth/total?logo=github&label=Downloads&cacheSeconds=600)
 <br>
 [![Build Status](https://github.com/ATTWoWAddon/DataForAzeroth/workflows/Release/badge.svg)](https://github.com/ATTWoWAddon/DataForAzeroth/actions?workflow=Release)
