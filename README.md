@@ -1,7 +1,7 @@
 <img align="right" width="180" height="180" src="https://wago-addons.ams3.digitaloceanspaces.com/thumbnails/GCM2L2Lxz2AObRXu404Oggp5zcjhBYp01XCXffPQ.png">
 
 [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=&logo=github&logoColor=white)](https://github.com/ATTWoWAddon/DataForAzeroth)
-[![CurseForge](https://img.shields.io/badge/CurseForge-%23F16436?logo=CurseForge&logoColor=black)](https://www.curseforge.com/wow/addons/dataforazeroth)
+[![CurseForge](https://img.shields.io/badge/CurseForge-%23F16436?logo=CurseForge&logoColor=black)](https://www.curseforge.com/wow/addons/data-for-azeroth)
 [![Wago.io](https://img.shields.io/badge/Wago.io-%231e1e1e)](https://addons.wago.io/addons/dataforazeroth)
 [![Battle.Net API](https://img.shields.io/badge/Blizzard%20API-4381C3?logo=battledotnet&logoColor=white)](https://develop.battle.net/)
 [![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?&logo=visual-studio-code&logoColor=white)](https://code.visualstudio.com)
@@ -11,7 +11,7 @@
 [![Patreon](https://img.shields.io/badge/Patreon-F96854?&logo=patreon&logoColor=white)](https://www.patreon.com/shoogen)
 [![Twitch](https://img.shields.io/badge/Twitch-%239146FF?logo=twitch&logoColor=white)](https://twitch.tv/shoogen)
 <br>
-[![CurseForge](https://cf.way2muchnoise.eu/1309636.svg)](https://www.curseforge.com/wow/addons/dataforazeroth)
+[![CurseForge](https://cf.way2muchnoise.eu/1309636.svg)](https://www.curseforge.com/wow/addons/data-for-azeroth)
 ![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/ATTWoWAddon/DataForAzeroth/total?logo=github&label=Downloads&cacheSeconds=600)
 <br>
 [![Build Status](https://github.com/ATTWoWAddon/DataForAzeroth/workflows/Release/badge.svg)](https://github.com/ATTWoWAddon/DataForAzeroth/actions?workflow=Release)
