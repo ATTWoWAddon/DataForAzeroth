@@ -2,7 +2,7 @@
 
 [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=&logo=github&logoColor=white)](https://github.com/ATTWoWAddon/DataForAzeroth)
 [![CurseForge](https://img.shields.io/badge/CurseForge-%23F16436?logo=CurseForge&logoColor=black)](https://www.curseforge.com/wow/addons/data-for-azeroth)
-[![Wago.io](https://img.shields.io/badge/Wago.io-%231e1e1e)](https://addons.wago.io/addons/dataforazeroth)
+[![Wago.io](https://img.shields.io/badge/Wago.io-%231e1e1e)](https://addons.wago.io/addons/data-for-azeroth)
 [![Battle.Net API](https://img.shields.io/badge/Blizzard%20API-4381C3?logo=battledotnet&logoColor=white)](https://develop.battle.net/)
 [![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?&logo=visual-studio-code&logoColor=white)](https://code.visualstudio.com)
 [![Lua](https://img.shields.io/badge/lua-%232C2D72.svg?&logo=lua&logoColor=white)](https://lua.org)
@@ -49,7 +49,7 @@ If you just updated and are getting tons of errors, completely close your game a
 - [Discord](https://discord.gg/7Mmjxdh)
 - [Issues](https://github.com/ATTWoWAddon/DataForAzeroth/issues)
 - [FAQ](https://legacy.curseforge.com/wow/addons/dataforazeroth/pages/f-a-q)
-- [WAGO.io](https://addons.wago.io/addons/dataforazeroth)
+- [WAGO.io](https://addons.wago.io/addons/data-for-azeroth)
 
 ## Special Thanks
 - Crieve -- Made the initial template for the addon!
