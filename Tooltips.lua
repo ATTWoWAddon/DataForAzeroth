@@ -121,10 +121,10 @@ local function AttachCharacterData(self, guid)
 		-- Uncomment for debugging
 		-- self:AddDoubleLine("GUID", guid);
 		local data = app.CHARACTER_DATA[guid:gsub("Player%-", "")];
-		if not data and DFA_MAIN and guid == app.GUID then
+		if not data and guid == app.GUID then
 			-- if looking at ourself, we fallback to looking up our main character
 			-- TODO add a setting to permit the addon to send this info to other players
-			data = app.CHARACTER_DATA[DFA_MAIN:gsub("Player%-", "")];
+			data = app.PLAYER_DATA;
 		end
 		if data then
 			self:AddLine(" ");

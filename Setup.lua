@@ -26,4 +26,9 @@ frame:SetScript("OnEvent", function(self, event, ...)
     if app.GUID and app.CHARACTER_DATA[app.GUID:gsub("Player%-", "")] then
         DFA_MAIN = app.GUID;
     end
+
+    -- if saved variable exists, then cache player's own data
+    if DFA_MAIN then
+        app.PLAYER_DATA = app.CHARACTER_DATA[DFA_MAIN:gsub("Player%-", "")];
+    end
 end)
