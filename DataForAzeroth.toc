@@ -5,6 +5,7 @@
 ## Version: @project-version@
 ## X-Curse-Project-ID: 1309636
 ## X-Wago-ID: YK9EZlKL
+## SavedVariables: DFA_MAIN
 
 db\max.lua
 db\us.lua

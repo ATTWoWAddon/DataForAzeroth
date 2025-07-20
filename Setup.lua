@@ -1,13 +1,11 @@
 local appName, app = ...;
 app.CHARACTER_DATA = {};
 
--- Determines the player's region and loads that data
--- TODO Ideally we can load correct region on demand, rather than loading all and erasing what we don't need
-
 local frame = CreateFrame("Frame");
 frame:RegisterEvent("PLAYER_LOGIN");
 frame:SetScript("OnEvent", function(self, event, ...)
-
+    -- Determines the player's region and loads that data
+    -- TODO Ideally we can load correct region on demand, rather than loading all and erasing what we don't need
     local region = GetCVar('portal');
     if app["DATA_" .. region] then
         print("Data for Azeroth: Loading data for " .. region);
@@ -23,4 +21,9 @@ frame:SetScript("OnEvent", function(self, event, ...)
         print("Data for Azeroth: Could not find player's region " .. region);
     end
 
+    -- If this character is found, track it as main in a saved variable
+    local guid = UnitGUID("player");
+    if guid and app.CHARACTER_DATA[guid:gsub("Player%-", "")] then
+        DFA_MAIN = guid;
+    end
 end)
