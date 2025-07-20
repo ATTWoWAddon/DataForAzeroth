@@ -2,7 +2,7 @@ local appName, app = ...;
 local L = {}; app.L = L;
 
 -- English Strings
-L.DATAFORAZEROTH = "|TInterface/Addons/DataForAzeroth/assets/Logo:0|t DataForAzeroth";
+L.DATAFORAZEROTH = "|TInterface/Addons/DataForAzeroth/assets/Logo:0|t Data for Azeroth";
 L.RANK_FORMAT = "World(%s)";
 
 -- Localize the Rank Format string
