@@ -21,9 +21,9 @@ frame:SetScript("OnEvent", function(self, event, ...)
         print("Data for Azeroth: Could not find player's region " .. region);
     end
 
-    -- If this character is found, track it as main in a saved variable
-    local guid = UnitGUID("player");
-    if guid and app.CHARACTER_DATA[guid:gsub("Player%-", "")] then
-        DFA_MAIN = guid;
+    -- If the current character is found, track it as main in a saved variable
+    app.GUID = UnitGUID("player");
+    if app.GUID and app.CHARACTER_DATA[app.GUID:gsub("Player%-", "")] then
+        DFA_MAIN = app.GUID;
     end
 end)
