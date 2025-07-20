@@ -123,8 +123,8 @@ local function AttachCharacterData(self, guid)
 		local data = app.CHARACTER_DATA[guid:gsub("Player%-", "")];
 		if data then
 			self:AddLine(" ");
-			self:AddDoubleLine(L.DATAFORAZEROTH, GetProgressColorText(data[1],data[2]));
-			self:AddDoubleLine(" ", L.RANK_FORMAT:format(GetRankColorText(data[3])));
+			self:AddDoubleLine(L.DATAFORAZEROTH, GetProgressColorText(data[1],app.MAX_SCORE));
+			self:AddDoubleLine(" ", L.RANK_FORMAT:format(GetRankColorText(data[2])));
 		end
 	end
 end
