@@ -28,8 +28,8 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Generate DataForAzeroth.lua
-        run: node generate.js
+      - name: Generate db files
+        run: node generate.mjs
 
       # once cloned, we just run the GitHub Action for the packager project
       - name: Package and release

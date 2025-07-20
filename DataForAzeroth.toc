@@ -6,6 +6,12 @@
 ## X-Curse-Project-ID: 1309636
 ## X-Wago-ID: YK9EZlKL
 
-DataForAzeroth.lua
+db\max.lua
+db\us.lua
+db\eu.lua
+db\tw.lua
+db\kr.lua
+
+Setup.lua
 Localization.lua
 Tooltips.lua

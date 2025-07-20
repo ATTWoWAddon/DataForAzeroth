@@ -120,7 +120,7 @@ local function AttachCharacterData(self, guid)
 	if guid then
 		-- Uncomment for debugging
 		-- self:AddDoubleLine("GUID", guid);
-		local data = app.CHARACTER_DATA[guid];
+		local data = app.CHARACTER_DATA[guid:gsub("Player%-", "")];
 		if data then
 			self:AddLine(" ");
 			self:AddDoubleLine(L.DATAFORAZEROTH, GetProgressColorText(data[1],data[2]));
