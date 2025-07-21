@@ -33,13 +33,13 @@ jobs:
 
       # prep nightly build suffix
       - name: Setup Build Suffix
-        run: echo "suffix=$(date +%s)" >> $GITHUB_ENV
+        run: echo "suffix=$(printf '%x' $(date +%s))" >> $GITHUB_ENV
 
       # once cloned, we just run the GitHub Action for the packager project
       - name: Package and release
         uses: BigWigsMods/packager@v2
         with:
-          args: -n "{package-name}-{project-version}.${{ env.suffix }}"
+          args: -n "{package-name}-{project-version}.${{ env.suffix }}:{project-version}.${{ env.suffix }}"
         env:
           CF_API_KEY: ${{ secrets.CF_API_KEY }}
           #GITHUB_OAUTH: ${{ secrets.GITHUB_TOKEN }}
