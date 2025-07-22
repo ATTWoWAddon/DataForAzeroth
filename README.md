@@ -34,6 +34,7 @@ If you just updated and are getting tons of errors, completely close your game a
 
 ## Special Thanks
 - Crieve -- Made the initial template for the addon!
+- Darkal -- Made contributions to the addon!
 
 ## Other Recommended Addons
 
