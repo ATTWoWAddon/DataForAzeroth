@@ -173,3 +173,53 @@ else
 	GameTooltip:HookScript("OnTooltipSetUnit", AttachTooltip);
 	GameTooltip:HookScript("OnShow", AttachTooltip);
 end
+
+-- Adds custom tooltip lines to each guild roster member in the Communities Frame
+local function AddGuildRosterTooltip()
+    local scrollTarget = CommunitiesFrame
+        and CommunitiesFrame.MemberList
+        and CommunitiesFrame.MemberList.ScrollBox
+        and CommunitiesFrame.MemberList.ScrollBox.ScrollTarget
+    if not scrollTarget then return end
+
+    for _, button in ipairs({ scrollTarget:GetChildren() }) do
+        if button and not button.tooltipHooked then
+            button:HookScript("OnEnter", function(self)
+                local memberInfo = self.GetMemberInfo and self:GetMemberInfo()
+                if not memberInfo then return end
+
+                local guid = memberInfo.guid
+                if guid then
+                    AttachCharacterData(GameTooltip, guid)
+                end
+
+                GameTooltip:Show()
+            end)
+
+            button.tooltipHooked = true
+        end
+    end
+end
+
+-- Checks if the currently selected community tab is the guild tab
+local function IsCurrentTabGuild()
+    local selectedClubId = CommunitiesFrame and CommunitiesFrame:GetSelectedClubId()
+    if not selectedClubId then return false end
+
+    local clubInfo = C_Club.GetClubInfo(selectedClubId)
+    return clubInfo and clubInfo.clubType == Enum.ClubType.Guild
+end
+
+-- Sets up event hooks to add tooltips when appropriate
+local function SetupCommunitiesTooltipHook()
+    local f = CreateFrame("Frame")
+    f:RegisterEvent("PLAYER_ENTERING_WORLD")
+    f:RegisterEvent("GUILD_ROSTER_UPDATE")
+    f:SetScript("OnEvent", function()
+        if CommunitiesFrame and CommunitiesFrame:IsShown() and IsCurrentTabGuild() then
+            AddGuildRosterTooltip()
+        end
+    end)
+end
+
+SetupCommunitiesTooltipHook()
