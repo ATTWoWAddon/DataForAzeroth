@@ -129,7 +129,7 @@ local function AttachCharacterData(self, guid)
 		if data then
 			self:AddLine(" ");
 			self:AddDoubleLine(L.DATAFORAZEROTH, GetProgressColorText(data[1],app.MAX_SCORE));
-			self:AddDoubleLine(" ", L.RANK_FORMAT:format(GetRankColorText(data[2])));
+			self:AddDoubleLine(" ", L.RANK_FORMAT:format(GetRankColorText(data[2]), GetRankColorText(data[3]), GetRankColorText(data[5])));
 		end
 	end
 end
