@@ -12,7 +12,7 @@ if locale == "es" then
 elseif locale == "mx" then
 	L.RANK_FORMAT = "Mundo #%s Región #%s Reino #%s";
 elseif locale == "de" then
-	L.RANK_FORMAT = "Welt #%s Region #%s Reich #%s";
+	L.RANK_FORMAT = "Welt #%s Region #%s Server #%s";
 elseif locale == "fr" then
 	L.RANK_FORMAT = "Monde #%s Région #%s Royaume #%s";
 elseif locale == "it" then
