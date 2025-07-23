@@ -20,7 +20,7 @@ elseif locale == "it" then
 elseif locale == "pt" then
 	L.RANK_FORMAT = "Mundo #%s Região #%s Reino #%s";
 elseif locale == "ru" then
-	L.RANK_FORMAT = "Мир #%s Регион #%s Царство #%s";
+	L.RANK_FORMAT = "Мир #%s Регион #%s Сервер #%s";
 elseif locale == "ko" then
 	L.RANK_FORMAT = "월드 #%s 지역 #%s 영역 #%s";
 elseif locale == "cn" then
