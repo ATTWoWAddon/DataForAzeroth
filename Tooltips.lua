@@ -120,16 +120,23 @@ local function AttachCharacterData(self, guid)
 	if guid then
 		-- Uncomment for debugging
 		-- self:AddDoubleLine("GUID", guid);
+		guid = app.ALTS[guid] or guid; -- lookup main character's GUID, if it exists
 		local data = app.CHARACTER_DATA[guid:gsub("Player%-", "")];
-		if not data and guid == app.GUID then
-			-- if looking at ourself, we fallback to looking up our main character
-			-- TODO add a setting to permit the addon to send this info to other players
-			data = app.PLAYER_DATA;
-		end
 		if data then
+			-- we have data, so add it to the tooltip
 			self:AddLine(" ");
 			self:AddDoubleLine(L.DATAFORAZEROTH, GetProgressColorText(data[1],app.MAX_SCORE));
 			self:AddDoubleLine(" ", L.RANK_FORMAT:format(GetRankColorText(data[2]), GetRankColorText(data[3]), GetRankColorText(data[5])));
+		elseif app.ALTS[guid] == nil then
+			-- the target could be on an alt, whisper them ONCE to get their GUID
+			-- won't get a response if they don't have the addon or are hiding alts
+			local _, _, _, _, _, name, realm = GetPlayerInfoByGUID(guid);
+			if name and name ~= "" then
+				if realm and realm ~= "" then name = name .. "-" .. realm end
+
+				app.ALTS[guid] = false; -- prevents future whispers
+				C_ChatInfo.SendAddonMessage("DFA", "WHO", "WHISPER", name);
+			end
 		end
 	end
 end

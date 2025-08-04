@@ -1,5 +1,6 @@
 local appName, app = ...;
 app.CHARACTER_DATA = {};
+app.ALTS = {};
 
 local frame = CreateFrame("Frame");
 frame:RegisterEvent("PLAYER_LOGIN");
@@ -16,13 +17,13 @@ frame:SetScript("OnEvent", function(self, event, ...)
     end
 
     -- If the current character is found, track it as main in a saved variable
-    app.GUID = UnitGUID("player");
-    if app.GUID and app.CHARACTER_DATA[app.GUID:gsub("Player%-", "")] then
-        DFA_MAIN = app.GUID;
+    local myguid = UnitGUID("player");
+    if myguid and app.CHARACTER_DATA[myguid:gsub("Player%-", "")] then
+        DFA_MAIN = myguid;
     end
 
-    -- if saved variable exists, then cache player's own data
+    -- setup alts lookup table
     if DFA_MAIN then
-        app.PLAYER_DATA = app.CHARACTER_DATA[DFA_MAIN:gsub("Player%-", "")];
+        app.ALTS[myguid] = DFA_MAIN;
     end
 end)

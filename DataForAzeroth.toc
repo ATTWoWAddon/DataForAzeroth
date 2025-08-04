@@ -5,7 +5,7 @@
 ## Version: @project-version@
 ## X-Curse-Project-ID: 1309636
 ## X-Wago-ID: YK9EZlKL
-## SavedVariables: DFA_MAIN
+## SavedVariables: DFA_MAIN, DFA_SETTINGS
 
 db\max.lua
 db\us.lua
@@ -14,5 +14,8 @@ db\tw.lua
 db\kr.lua
 
 Setup.lua
+Settings.lua
+AddonChat.lua
 Localization.lua
+
 Tooltips.lua
