@@ -106,7 +106,12 @@ end
 local function GetProgressColorText(progress, total)
 	if total and total > 0 then
 		local percent = min(1, (progress or 0) / total);
-		return "|c" .. ProgressColors[percent] .. FormatNumericWithCommas(progress) .. " / " .. FormatNumericWithCommas(total) .. " (" .. GetNumberWithZeros(percent * 100, 2) .. "%)|r";
+
+		local strmax, strpercent = "", "";
+		if not DFA_SETTINGS.HideMax then strmax = " / " .. FormatNumericWithCommas(total) end
+		if not DFA_SETTINGS.HidePercent then strpercent = " (" .. GetNumberWithZeros(percent * 100, 2) .. "%)" end
+
+		return "|c" .. ProgressColors[percent] .. FormatNumericWithCommas(progress) .. strmax .. strpercent .. "|r";
 	end
 end
 local function GetRankColorText(rank)
@@ -125,8 +130,13 @@ local function AttachCharacterData(self, guid)
 		if data then
 			-- we have data, so add it to the tooltip
 			self:AddLine(" ");
-			self:AddDoubleLine(L.DATAFORAZEROTH, GetProgressColorText(data[1],app.MAX_SCORE));
-			self:AddDoubleLine(" ", L.RANK_FORMAT:format(GetRankColorText(data[2]), GetRankColorText(data[3]), GetRankColorText(data[5])));
+			self:AddLine(L.DATAFORAZEROTH);
+			if not DFA_SETTINGS.HideScore then
+				self:AddLine(GetProgressColorText(data[1],app.MAX_SCORE));
+			end
+			if not DFA_SETTINGS.HideRank then
+				self:AddLine(L.RANK_FORMAT:format(GetRankColorText(data[2]), GetRankColorText(data[3]), GetRankColorText(data[5])));
+			end
 		elseif app.ALTS[guid] == nil then
 			-- the target could be on an alt, whisper them ONCE to get their GUID
 			-- won't get a response if they don't have the addon or are hiding alts
