@@ -1,7 +1,7 @@
 ## Title: Data for Azeroth
 ## Author: shoogen
 ## IconTexture: Interface/Addons/DataForAzeroth/assets/Logo
-## Interface: 110107
+## Interface: 110200
 ## Version: @project-version@
 ## X-Curse-Project-ID: 1309636
 ## X-Wago-ID: YK9EZlKL

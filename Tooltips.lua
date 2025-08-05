@@ -145,7 +145,7 @@ local function AttachCharacterData(self, guid)
 				if realm and realm ~= "" then name = name .. "-" .. realm end
 
 				app.ALTS[guid] = false; -- prevents future whispers
-				C_ChatInfo.SendAddonMessage("DFA", "WHO", "WHISPER", name);
+				--C_ChatInfo.SendAddonMessage("DFA", "WHO", "WHISPER", name); -- broken in 11.2?
 			end
 		end
 	end
