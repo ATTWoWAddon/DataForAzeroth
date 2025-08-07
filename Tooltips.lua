@@ -66,53 +66,21 @@ end
 local function ClearTooltip(self)
     self.DataForAzerothProcessing = nil;
 end
-local function FormatNumericWithCommas(amount)
-    local k
-    while true do
-        amount, k = tostring(amount):gsub("^(-?%d+)(%d%d%d)", '%1,%2')
-        if k == 0 then break end
-    end
-    return amount
-end
-local function GetNumberWithZeros(number, desiredLength)
-    if desiredLength > 0 then
-        local str = tostring(number);
-        local length = str:len();
-        local pos = str:find("[.]");
-        if not pos then
-            str = str .. ".";
-            for i=desiredLength,1,-1 do
-                str = str .. "0";
-            end
-        else
-            local totalExtra = desiredLength - (length - pos);
-            for i=totalExtra,1,-1 do
-                str = str .. "0";
-            end
-            if totalExtra < 1 then
-                str = str:sub(1, pos + desiredLength);
-            end
-        end
-        return str;
-    else
-        return tostring(floor(number));
-    end
-end
 local function GetProgressColorText(progress, total)
     if total and total > 0 then
         local percent = min(1, (progress or 0) / total);
 
         local strmax, strpercent = "", "";
-        if not DFA_SETTINGS.HideMax then strmax = " / " .. FormatNumericWithCommas(total) end
-        if not DFA_SETTINGS.HidePercent then strpercent = " (" .. GetNumberWithZeros(percent * 100, 2) .. "%)" end
+        if not DFA_SETTINGS.HideMax then strmax = " / " .. BreakUpLargeNumbers(total) end
+        if not DFA_SETTINGS.HidePercent then strpercent = " (" .. string.format("%.2f", percent) .. "%)" end
 
-        return "|c" .. ProgressColors[percent] .. FormatNumericWithCommas(progress) .. strmax .. strpercent .. "|r";
+        return "|c" .. ProgressColors[percent] .. BreakUpLargeNumbers(progress) .. strmax .. strpercent .. "|r";
     end
 end
 local function GetRankColorText(rank)
     if rank then
         -- This is where you would determine a color based on the rank? (Maybe legendary for Top 10, Purple for Top 250, etc)
-        return FormatNumericWithCommas(rank);
+        return BreakUpLargeNumbers(rank);
     end
     return "??";
 end
@@ -146,45 +114,21 @@ local function AttachCharacterData(self, guid)
     end
 end
 
--- Tooltip API Differences between Modern and Legacy APIs.
-if TooltipDataProcessor and select(4, GetBuildInfo()) > 100000 then
-    -- 10.0.2
-    -- https://wowpedia.fandom.com/wiki/Patch_10.0.2/API_changes#Tooltip_Changes
-    local TooltipUtil = TooltipUtil;
-    local function AttachTooltip(self, ttdata)
-        if CanAttachTooltips() and not self.DataForAzerothProcessing then
-            self.DataForAzerothProcessing = true;
-            AttachCharacterData(self, select(3, TooltipUtil.GetDisplayedUnit(self)));
-            
-            -- Ensure that the processing state gets removed once the tooltip is cleared
-            if not self.DataForAzerothOnTooltipClearedHook then
-                pcall(self.HookScript, self, "OnTooltipCleared", ClearTooltip)
-                self.DataForAzerothOnTooltipClearedHook = true;
-            end
+local TooltipUtil = TooltipUtil;
+local function AttachTooltip(self, ttdata)
+    if CanAttachTooltips() and not self.DataForAzerothProcessing then
+        self.DataForAzerothProcessing = true;
+        AttachCharacterData(self, select(3, TooltipUtil.GetDisplayedUnit(self)));
+        
+        -- Ensure that the processing state gets removed once the tooltip is cleared
+        if not self.DataForAzerothOnTooltipClearedHook then
+            pcall(self.HookScript, self, "OnTooltipCleared", ClearTooltip)
+            self.DataForAzerothOnTooltipClearedHook = true;
         end
     end
-    
-    TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, AttachTooltip);
-else
-    -- Pre-10.0.2 (Legacy)
-    local function AttachTooltip(self)
-        if CanAttachTooltips() and not self.DataForAzerothProcessing then
-            self.DataForAzerothProcessing = true;
-
-            -- Does the tooltip have a target?
-            local target = select(2, self:GetUnit());
-            if target then AttachCharacterData(self, UnitGUID(target)); end
-
-            -- Ensure that the processing state gets removed once the tooltip is cleared
-            if not self.DataForAzerothOnTooltipClearedHook then
-                pcall(self.HookScript, self, "OnTooltipCleared", ClearTooltip)
-                self.DataForAzerothOnTooltipClearedHook = true;
-            end
-        end
-    end
-    GameTooltip:HookScript("OnTooltipSetUnit", AttachTooltip);
-    GameTooltip:HookScript("OnShow", AttachTooltip);
 end
+
+TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, AttachTooltip);
 
 -- Adds custom tooltip lines to each guild roster member in the Communities Frame
 local function AddGuildRosterTooltip()
