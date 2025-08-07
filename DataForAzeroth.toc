@@ -14,8 +14,8 @@ db\tw.lua
 db\kr.lua
 
 Setup.lua
+Localization.lua
 Settings.lua
 AddonChat.lua
-Localization.lua
 
 Tooltips.lua

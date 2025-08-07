@@ -1,48 +1,28 @@
 local appName, app = ...;
+local L = app.L;
 
-if not DFA_SETTINGS then
-    DFA_SETTINGS = {
-        ShareAlts = false,
-        HideScore = false,
-        HideMax = false,
-        HidePercent = false,
-        HideRank = false
-    };
+local function CreateCheckbox(category, variable)
+    local text = L[variable .. "_Setting"];
+    local tooltip = L[variable .. "_Tooltip"];
+    local setting = Settings.RegisterAddOnSetting(category, "DFA_S_" .. variable, variable, DFA_SETTINGS, Settings.VarType.Boolean, text, false);
+    Settings.CreateCheckbox(category, setting, tooltip);
 end
 
--- TODO build AddOn Options UI
--- everything below is temporary code until then
+local function CreateSettings()
+    local category = Settings.RegisterVerticalLayoutCategory("Data for Azeroth");
 
-local available = {
-    ShareAlts = 1,
-    HideScore = 1,
-    HideMax = 1,
-    HidePercent = 1,
-    HideRank = 1
-};
+    CreateCheckbox(category, "ShareAlts");
+    CreateCheckbox(category, "HideScore");
+    CreateCheckbox(category, "HideRank");
+    CreateCheckbox(category, "HideMax");
+    CreateCheckbox(category, "HidePercent");
 
-local function split(text)
-    local result = {};
-    for word in string.gmatch(text, "([^ ]+)") do
-        table.insert(result, word);
-    end
-    return unpack(result);
+    Settings.RegisterAddOnCategory(category);
 end
 
-SLASH_DATAFORAZEROTH1 = "/dfa";
-SlashCmdList.DATAFORAZEROTH = function(msg)
-    local setting, value = split(msg);
-    if available[setting] then
-        local on = (value == "true");
-        DFA_SETTINGS[setting] = on;
-        print("Setting", setting, "to", on);
-    end
-
-    if msg == "shareon" then
-        DFA_SETTINGS.ShareAlts = true;
-        print("ShareAlts turned on");
-    elseif msg == "shareoff" then
-        DFA_SETTINGS.ShareAlts = false;
-        print("ShareAlts turned off");
-    end
-end
+local frame = CreateFrame("Frame");
+frame:RegisterEvent("PLAYER_LOGIN");
+frame:SetScript("OnEvent", function(self, event, addon)
+    if not DFA_SETTINGS then DFA_SETTINGS = {} end
+    CreateSettings();
+end)
