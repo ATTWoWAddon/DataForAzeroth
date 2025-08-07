@@ -227,16 +227,13 @@ local function IsCurrentTabGuild()
     return clubInfo and clubInfo.clubType == Enum.ClubType.Guild
 end
 
--- Sets up event hooks to add tooltips when appropriate
-local function SetupCommunitiesTooltipHook()
-    local f = CreateFrame("Frame")
-    f:RegisterEvent("PLAYER_ENTERING_WORLD")
-    f:RegisterEvent("GUILD_ROSTER_UPDATE")
-    f:SetScript("OnEvent", function()
-        if CommunitiesFrame and CommunitiesFrame:IsShown() and IsCurrentTabGuild() then
-            AddGuildRosterTooltip()
-        end
-    end)
+-- Event handler for guild roster changes
+local function GuildRosterEventHandler()
+    if CommunitiesFrame and CommunitiesFrame:IsShown() and IsCurrentTabGuild() then
+        AddGuildRosterTooltip()
+    end
 end
 
-SetupCommunitiesTooltipHook()
+-- Sets up event hooks to add tooltips when appropriate
+app:OnEvent("PLAYER_ENTERING_WORLD", GuildRosterEventHandler);
+app:OnEvent("GUILD_ROSTER_UPDATE", GuildRosterEventHandler);

@@ -20,9 +20,7 @@ local function CreateSettings()
     Settings.RegisterAddOnCategory(category);
 end
 
-local frame = CreateFrame("Frame");
-frame:RegisterEvent("PLAYER_LOGIN");
-frame:SetScript("OnEvent", function(self, event, addon)
+app:OnEvent("PLAYER_LOGIN", function()
     if not DFA_SETTINGS then DFA_SETTINGS = {} end
     CreateSettings();
 end)

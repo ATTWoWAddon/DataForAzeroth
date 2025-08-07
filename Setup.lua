@@ -2,9 +2,29 @@ local appName, app = ...;
 app.CHARACTER_DATA = {};
 app.ALTS = {};
 
+-- helper code for event handlers
 local frame = CreateFrame("Frame");
-frame:RegisterEvent("PLAYER_LOGIN");
+local handlers = {};
+
+function app:OnEvent(event, fn)
+    if not handlers[event] then
+        handlers[event] = {};
+        frame:RegisterEvent(event);
+    end
+
+    table.insert(handlers[event], fn);
+end
+
 frame:SetScript("OnEvent", function(self, event, ...)
+    if handlers[event] then
+        for _, handler in ipairs(handlers[event]) do
+            handler(...)
+        end
+    end
+end)
+
+-- initialization
+app:OnEvent("PLAYER_LOGIN", function(...)
     -- Determines the player's region and loads that data
     local region = GetCVar('portal');
     local fn = app["Load" .. region];
