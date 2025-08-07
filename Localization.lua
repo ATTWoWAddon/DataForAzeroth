@@ -5,20 +5,23 @@ local L = {}; app.L = L;
 L.DATAFORAZEROTH = "|TInterface/Addons/DataForAzeroth/assets/Logo:0|t Data for Azeroth";
 L.RANK_FORMAT = "World #%s  Region #%s  Realm #%s";
 
-L.ShareAlts_Setting = "Share My Alts With Other Players";
-L.ShareAlts_Tooltip = "Will allow other players to see your Data for Azeroth scores when they view the tooltip of your alts";
+L.SETTINGS_GENERAL = "General";
+L.SETTINGS_TOOLTIPS = "Tooltips";
+
+L.ShareAlts_Setting = "Share Alts With Other Players";
+L.ShareAlts_Tooltip = "Will allow other players to see your Data for Azeroth information when you are playing an alt. This could potentially allow them to figure out who your main character is.";
 
 L.HideScore_Setting = "Hide Score";
-L.HideScore_Tooltip = "Will hide the score line in the Data for Azeroth tooltip";
-
-L.HideRank_Setting = "Hide Rankings";
-L.HideRank_Tooltip = "Will hide the rankings line in the Data for Azeroth tooltip";
+L.HideScore_Tooltip = "Hides the Completion Score in the Data for Azeroth tooltip.";
 
 L.HideMax_Setting = "Hide Max";
-L.HideMax_Tooltip = "Will hide the max completion score in the Data for Azeroth tooltip";
+L.HideMax_Tooltip = "Hides the maximum possible Completion Score in the Data for Azeroth tooltip.";
 
 L.HidePercent_Setting = "Hide Percent";
-L.HidePercent_Tooltip = "Will hide the percent completed in the Data for Azeroth tooltip";
+L.HidePercent_Tooltip = "Hides the percentage in the Data for Azeroth tooltip.";
+
+L.HideRank_Setting = "Hide Rankings";
+L.HideRank_Tooltip = "Hides the World/Region/Realm rankings in the Data for Azeroth tooltip.";
 
 -- Localized Strings
 local locale = GetLocale():sub(3,4):lower();

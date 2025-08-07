@@ -9,13 +9,16 @@ local function CreateCheckbox(category, variable)
 end
 
 local function CreateSettings()
-    local category = Settings.RegisterVerticalLayoutCategory("Data for Azeroth");
+    local category, layout = Settings.RegisterVerticalLayoutCategory("Data for Azeroth");
 
+    layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L.SETTINGS_GENERAL));
     CreateCheckbox(category, "ShareAlts");
+
+    layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L.SETTINGS_TOOLTIPS));
     CreateCheckbox(category, "HideScore");
-    CreateCheckbox(category, "HideRank");
     CreateCheckbox(category, "HideMax");
     CreateCheckbox(category, "HidePercent");
+    CreateCheckbox(category, "HideRank");
 
     Settings.RegisterAddOnCategory(category);
 end
