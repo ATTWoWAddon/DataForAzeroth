@@ -72,7 +72,7 @@ local function GetProgressColorText(progress, total)
 
         local strmax, strpercent = "", "";
         if not DFA_SETTINGS.HideMax then strmax = " / " .. BreakUpLargeNumbers(total) end
-        if not DFA_SETTINGS.HidePercent then strpercent = " (" .. string.format("%.2f", percent) .. "%)" end
+        if not DFA_SETTINGS.HidePercent then strpercent = " (" .. string.format("%.2f", 100 * percent) .. "%)" end
 
         return "|c" .. ProgressColors[percent] .. BreakUpLargeNumbers(progress) .. strmax .. strpercent .. "|r";
     end
